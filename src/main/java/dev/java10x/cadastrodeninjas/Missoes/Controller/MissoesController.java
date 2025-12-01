@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("missoes")
 public class MissoesController {
 
+
+
     @PostMapping("/criar")
     public String criarMissao(){
         return "Missão criada";
