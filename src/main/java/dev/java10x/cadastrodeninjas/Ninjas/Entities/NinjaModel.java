@@ -21,7 +21,7 @@ public class NinjaModel {
 
     private String imgUrl;
 
-    private String rank;
+    private String ranking;
     private String nome;
 
     @Column(unique = true)

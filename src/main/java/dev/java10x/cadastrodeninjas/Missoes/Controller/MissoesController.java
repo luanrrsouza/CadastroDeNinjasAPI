@@ -1,16 +1,24 @@
 package dev.java10x.cadastrodeninjas.Missoes.Controller;
 
+import dev.java10x.cadastrodeninjas.Missoes.Entities.MissoesModel;
+import dev.java10x.cadastrodeninjas.Missoes.Service.MissoesService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("missoes")
 public class MissoesController {
 
-
+   private MissoesService missoesService;
+   public MissoesController(MissoesService missoesService){
+       this.missoesService = missoesService;
+   }
 
     @PostMapping("/criar")
-    public String criarMissao(){
-        return "Missão criada";
+    public MissoesModel criarMissoes(@RequestBody MissoesModel missoesModel){
+       return missoesService.criarMissoes(missoesModel);
+
     }
 
     @PutMapping("/alterar")
@@ -24,7 +32,12 @@ public class MissoesController {
     }
 
     @GetMapping("/listar")
-    public String listarMissao(){
-        return "Missoes Listadas";
+    public List<MissoesModel> listarMissoes(){
+       return missoesService.listarMissoes();
+    }
+
+    @GetMapping("/listar/{id}")
+    public MissoesModel listarMissoes(@PathVariable Long id){
+       return missoesService.listarMissaoPorId(id);
     }
 }
