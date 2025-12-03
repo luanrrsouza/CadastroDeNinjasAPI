@@ -1,7 +1,7 @@
 package dev.java10x.cadastrodeninjas.Ninjas.Controller;
 
 import dev.java10x.cadastrodeninjas.Ninjas.Entities.NinjaDTO;
-import dev.java10x.cadastrodeninjas.Ninjas.Entities.NinjaModel;
+
 import dev.java10x.cadastrodeninjas.Ninjas.Service.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,19 +32,19 @@ public class NinjaController {
 
     // Mostrar todos os ninjas (READ)
     @GetMapping("/listar")
-    public List<NinjaModel> mostrarTodosOsNinjas (){
+    public List<NinjaDTO> mostrarTodosOsNinjas (){
         return ninjaService.listarNinjas();
     }
 
     // Mostrar ninja por ID (READ)
     @GetMapping("/listar/{id}")
-    public NinjaModel mostrarNinja (@PathVariable Long id){
+    public NinjaDTO mostrarNinja (@PathVariable Long id){
         return ninjaService.mostrarNinja(id);
     }
 
     // Alterar dados dos ninjas (UPDATE)
     @PutMapping("/alterar/{id}")
-    public NinjaModel alterarPorID(@PathVariable Long id, @RequestBody NinjaModel ninjaAtualizado){
+    public NinjaDTO alterarPorID(@PathVariable Long id, @RequestBody NinjaDTO ninjaAtualizado){
             return ninjaService.atualizarNinja(id, ninjaAtualizado);
     }
 
